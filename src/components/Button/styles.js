@@ -12,22 +12,23 @@ const sizes = {
 };
 
 const CustomPrimary = styled.button`
-  background-color: ${(props) => props.primaryColor && props.primaryColor};
+  background-color: ${(props) => props.primarycolor && props.primarycolor};
 `;
 
 export const Primary = tw(CustomPrimary)`
     text-white 
     border 
     border-transparent
+    bg-primary-red
     ${() => base}
     ${(props) => sizes[props.size]}
+    ${(props) => (props.disabled ? "opacity-50 cursor-not-allowed bg-gray-300" : "")}
     ${(props) =>
-      props.disabled ? "opacity-50 cursor-not-allowed bg-gray-300" : ""}
-      ${(props) => !props.primaryColor && "bg-primary-red"}
+      props.primarycolor || !props.primarycolor === "undefined" ? "" : "bg-primary-red"}
 `;
 
 const CustomOutline = styled.button`
-  border-color: ${(props) => props.primaryColor && props.primaryColor};
+  border-color: ${(props) => props.primarycolor && props.primarycolor};
 `;
 
 export const Outline = tw(CustomOutline)`
@@ -40,13 +41,11 @@ export const Outline = tw(CustomOutline)`
     active:text-gray-500 
     focus:shadow-outline-gray
     ${(props) => sizes[props.size]}
-    ${(props) =>
-      props.disabled ? "opacity-50 cursor-not-allowed bg-gray-300" : ""}
-    ${(props) => !props.primaryColor && "border-primary-red"}
+    ${(props) => (props.disabled ? "opacity-50 cursor-not-allowed bg-gray-300" : "")}
+    ${(props) => !props.primarycolor && "border-primary-red"}
 `;
 
 export const Secondary = tw.button`
-    ${() => base}
     bg-gray-100
     text-black 
     dark:text-gray-400 
@@ -59,7 +58,7 @@ export const Secondary = tw.button`
     dark:hover:bg-gray-500 
     dark:hover:text-gray-300 
     dark:hover:bg-opacity-10
+    ${() => base}         
     ${(props) => sizes[props.size]}
-    ${(props) =>
-      props.disabled ? "opacity-50 cursor-not-allowed bg-gray-300" : ""}
+    ${(props) => (props.disabled ? "opacity-50 cursor-not-allowed bg-gray-300" : "")}
 `;

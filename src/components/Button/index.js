@@ -9,7 +9,11 @@ export const Button = ({ type, label, ...props }) => {
   switch (type) {
     case "primary":
     default:
-      return <Primary {...props}>{label}</Primary>;
+      return (
+        <Primary {...props}>
+          <p>{label}</p>
+        </Primary>
+      );
     case "outline":
       return <Outline {...props}>{label}</Outline>;
     case "secondary":
@@ -41,7 +45,10 @@ Button.propTypes = {
   /**
    * Optional click handler
    */
-   primaryColor: PropTypes.string,
+  primarycolor: PropTypes.string,
+  /**
+   *
+   */
 };
 
 Button.defaultProps = {
